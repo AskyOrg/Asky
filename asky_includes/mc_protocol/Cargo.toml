@@ -1,0 +1,19 @@
+[package]
+name = "mc_protocol"
+version = "0.1.0+dev-1.21.11"
+edition = "2024"
+
+[dependencies]
+macros = { path = "../../asky_includes/macros" }
+asky_nbt = { path = "../../asky_lib/asky_nbt" }
+asky_identifier = { path = "../../asky_lib/asky_identifier" }
+protocol_version = { path = "../protocol_version" }
+asky_binutils = { path = "../asky_binutils", features = [
+    "binary_reader",
+    "binary_writer",
+    "length_prefixed",
+    "var_int",
+    "uuid",
+] }
+thiserror.workspace = true
+uuid.workspace = true

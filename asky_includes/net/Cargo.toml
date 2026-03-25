@@ -1,0 +1,10 @@
+[package]
+name = "net"
+version = "0.1.0+dev-1.21.11"
+edition = "2024"
+
+[dependencies]
+mc_protocol = { path = "../mc_protocol" }
+flate2.workspace = true
+thiserror.workspace = true
+tokio.workspace = true

@@ -1,0 +1,13 @@
+[package]
+name = "asky_nbt"
+version = "0.1.0+dev-1.21.11"
+edition = "2024"
+
+[dependencies]
+byteorder.workspace = true
+flate2.workspace = true
+indexmap.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+serde_bytes.workspace = true
+thiserror.workspace = true

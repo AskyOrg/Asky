@@ -1,0 +1,17 @@
+[package]
+name = "asky_binutils"
+version = "0.1.0+dev-1.21.11"
+edition = "2024"
+
+[features]
+default = []
+binary_reader = []
+binary_writer = []
+length_prefixed = []
+var_int = []
+uuid = ["dep:uuid"]
+
+[dependencies]
+thiserror.workspace = true
+tracing.workspace = true
+uuid = { workspace = true, optional = true }

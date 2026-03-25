@@ -2,7 +2,11 @@ use std::{path::PathBuf, process::ExitCode};
 use tracing::{Level, error};
 use tracing_subscriber::{EnvFilter, layer::SubscriberExt, util::SubscriberInitExt};
 
-use crate::configuration::config::{Config, ConfigError, load_or_create};
+use crate::{
+    config::config::{Config, ConfigError, load_or_create},
+    server::network::Server,
+    state::{ServerState, ServerStateBuilderError},
+};
 
 pub async fn start_server(config_path: PathBuf, logging_level: u8) -> ExitCode {
     enable_logging(logging_level);
@@ -10,7 +14,18 @@ pub async fn start_server(config_path: PathBuf, logging_level: u8) -> ExitCode {
         return ExitCode::FAILURE;
     };
 
-    ExitCode::SUCCESS
+    let bind = cfg.bind.clone();
+
+    match build_state(cfg) {
+        Ok(server_state) => {
+            Server::new(&bind, server_state).run().await;
+            ExitCode::SUCCESS
+        }
+        Err(err) => {
+            error!("Failed to start Asky Server: {err}");
+            ExitCode::SUCCESS
+        }
+    }
 }
 
 fn load_configuration(config_path: &PathBuf) -> Option<Config> {
@@ -31,6 +46,19 @@ fn load_configuration(config_path: &PathBuf) -> Option<Config> {
         Ok(cfg) => return Some(cfg),
     }
     None
+}
+
+fn build_state(cfg: Config) -> Result<ServerState, ServerStateBuilderError> {
+    let mut server_state_builder = ServerState::builder();
+
+    let server_icon = cfg.server_list.server_icon;
+    if std::fs::exists(&server_icon)? {
+        server_state_builder.fav_icon(server_icon)?;
+    }
+
+    server_state_builder.time_world(cfg.world.time.into());
+
+    server_state_builder.build()
 }
 
 fn enable_logging(verbose: u8) {

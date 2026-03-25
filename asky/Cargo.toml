@@ -13,7 +13,15 @@ name = "asky"
 path = "src/main.rs"
 
 [dependencies]
+macros = { path = "../asky_includes/macros" }
+mc_packets = { path = "../asky_includes/mc_packets" }
+mc_protocol = { path = "../asky_includes/mc_protocol" }
+net = { path = "../asky_includes/net" }
+asky_nbt = { path = "../asky_lib/asky_nbt" }
+asky_text_component = { path = "../asky_includes/asky_text_component" }
+base64.workspace = true
 clap.workspace = true
+futures.workspace = true
 regex.workspace = true
 serde.workspace = true
 serde_json.workspace = true

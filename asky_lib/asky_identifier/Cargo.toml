@@ -1,0 +1,8 @@
+[package]
+name = "asky_identifier"
+version = "0.1.0+dev-1.21.11"
+edition = "2024"
+
+[dependencies]
+serde = { workspace = true, optional = true }
+thiserror.workspace = true

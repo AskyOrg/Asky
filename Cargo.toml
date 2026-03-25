@@ -1,8 +1,17 @@
 [workspace]
 resolver = "3"
 members = [
-    "asky_lib", # lib
-    "asky",     # main
+    "asky_lib/asky_nbt",                    # Minecraft NBT (French: https://fr.minecraft.wiki/w/Format_NBT)
+    "asky_lib/asky_identifier",             # Minecraft Identifier
+    "asky_includes/macros",                 # Packet Helper
+    "asky_includes/protocol_version",       # Protocl Version
+    "asky_includes/protocol_version_macro", # Protocl Version Helper
+    "asky_includes/mc_packets",             # Minecraft Packets Lib
+    "asky_includes/mc_protocol",            # Minecraft Protocol Lib
+    "asky_includes/net",                    # NET Lib
+    "asky_includes/asky_binutils",          # Bin utils lib
+    "asky_includes/asky_text_component",    # Minecraft Component (French: https://fr.minecraft.wiki/w/Codes_de_mise_en_forme)
+    "asky",                                 # main
 ]
 
 [workspace.dependencies]
@@ -11,6 +20,7 @@ byteorder = "1.5.0"
 quote = "1.0.45"
 serde = { version = "1.0.228", features = ["derive"] }
 serde_json = "1.0.149"
+serde_bytes = "0.11.19"
 uuid = "1.22.0"
 tracing = "0.1.44"
 tracing-subscriber = { version = "0.3.23", features = ["env-filter"] }
@@ -20,3 +30,9 @@ proc-macro2 = "1.0.106"
 thiserror = "2.0.18"
 clap = { version = "4.6.0", features = ["derive"] }
 regex = "1.12.3"
+flate2 = "1.1.9"
+indexmap = { version = "2.13.0", features = ["serde"] }
+quick-xml = "0.39.2"
+syn = { version = "2.0.117", features = ["full"] }
+rand = "0.10.0"
+futures = "0.3.32"

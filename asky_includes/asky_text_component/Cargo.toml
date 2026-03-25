@@ -1,0 +1,11 @@
+[package]
+name = "asky_text_component"
+version = "0.1.0+dev-1.21.11"
+edition = "2024"
+
+[dependencies]
+asky_nbt = { path = "../../asky_lib/asky_nbt" }
+quick-xml.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true

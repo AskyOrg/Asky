@@ -1,6 +1,7 @@
 mod cli;
-mod configuration;
+mod config;
 mod server;
+mod state;
 
 use crate::cli::Cli;
 use clap::Parser;

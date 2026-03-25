@@ -2,7 +2,7 @@ use clap::Parser;
 use std::path::PathBuf;
 
 #[derive(Parser, Clone)]
-#[command(about = "A lightweight Minecraft server in Rust.")]
+#[command(about = "A lightweight Minecraft server in Rust")]
 pub struct Cli {
     /// Enable verbose logging
     #[arg(

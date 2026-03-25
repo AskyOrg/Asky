@@ -1,0 +1,12 @@
+[package]
+name = "mc_packets"
+version = "0.1.0+dev-1.21.11"
+edition = "2024"
+
+[dependencies]
+mc_protocol = { path = "../mc_protocol" }
+asky_text_component = { path = "../asky_text_component" }
+asky_nbt = { path = "../../asky_lib/asky_nbt" }
+rand.workspace = true
+serde.workspace = true
+serde_json.workspace = true
