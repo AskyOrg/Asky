@@ -1,15 +1,15 @@
 {
-	"name": "data",
-	"module": "src/index.ts",
-	"type": "module",
-	"private": true,
-	"scripts": {
-		"start": "powershell set SSL_CERT_FILE=./cacert.pem && bun run ."
-	},
-	"devDependencies": {
-		"@types/bun": "latest"
-	},
-	"peerDependencies": {
-		"typescript": "^5"
-	}
+    "name": "data",
+    "module": "src/index.ts",
+    "type": "module",
+    "private": true,
+    "scripts": {
+        "start": "powershell set SSL_CERT_FILE=./cacert.pem && bun run ."
+    },
+    "devDependencies": {
+        "@types/bun": "latest"
+    },
+    "peerDependencies": {
+        "typescript": "^5"
+    }
 }
