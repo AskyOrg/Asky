@@ -1,17 +1,19 @@
 use crate::{
     server::{
-        client_data::ClientData, packet_registry::PacketRegistry, shutdown_signal::shutdown_signal,
+        client_data::ClientData, packet_handler::PacketHandlerError,
+        packet_registry::PacketRegistry, shutdown_signal::shutdown_signal,
     },
     state::ServerState,
 };
 use mc_protocol::prelude::State;
 use net::{packet_stream::PacketStreamError, raw_packet::RawPacket};
 use std::{num::TryFromIntError, sync::Arc};
+use thiserror::Error;
 use tokio::{
     net::{TcpListener, TcpStream},
     sync::RwLock,
 };
-use tracing::{debug, error, info, trace};
+use tracing::{debug, error, info, trace, warn};
 
 pub struct Server {
     state: Arc<RwLock<ServerState>>,

@@ -1,1 +1,8 @@
+# Cargo targer dir
 target
+
+# dependencies (bun install)
+node_modules
+
+# servers generations
+servers
